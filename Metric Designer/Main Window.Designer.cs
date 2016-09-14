@@ -38,6 +38,11 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainGroupBox = new System.Windows.Forms.GroupBox();
+            this.issueInfo = new System.Windows.Forms.Panel();
+            this.issueWeightValueLabel = new System.Windows.Forms.Label();
+            this.issueWeightLabel = new System.Windows.Forms.Label();
+            this.issueDisplayValueLabel = new System.Windows.Forms.Label();
+            this.issueDisplayLabel = new System.Windows.Forms.Label();
             this.attributesPanel = new System.Windows.Forms.Panel();
             this.weightTextBox = new System.Windows.Forms.TextBox();
             this.issueWeightCheckBox = new System.Windows.Forms.CheckBox();
@@ -46,15 +51,17 @@
             this.issueNameEditor = new System.Windows.Forms.Panel();
             this.renameButton = new System.Windows.Forms.Button();
             this.issueNameTextBox = new System.Windows.Forms.TextBox();
+            this.editorTree = new Metric_Designer.IssueTreeView();
             this.issuesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addChildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.editorTree = new Metric_Designer.IssueTreeView();
+            this.issueToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
+            this.issueInfo.SuspendLayout();
             this.attributesPanel.SuspendLayout();
             this.issueNameEditor.SuspendLayout();
             this.issuesContextMenu.SuspendLayout();
@@ -126,6 +133,7 @@
             this.mainGroupBox.AutoSize = true;
             this.mainGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainGroupBox.BackColor = System.Drawing.SystemColors.Control;
+            this.mainGroupBox.Controls.Add(this.issueInfo);
             this.mainGroupBox.Controls.Add(this.attributesPanel);
             this.mainGroupBox.Controls.Add(this.issueNameEditor);
             this.mainGroupBox.Controls.Add(this.editorTree);
@@ -136,6 +144,53 @@
             this.mainGroupBox.Size = new System.Drawing.Size(711, 369);
             this.mainGroupBox.TabIndex = 1;
             this.mainGroupBox.TabStop = false;
+            // 
+            // issueInfo
+            // 
+            this.issueInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.issueInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.issueInfo.Controls.Add(this.issueWeightValueLabel);
+            this.issueInfo.Controls.Add(this.issueWeightLabel);
+            this.issueInfo.Controls.Add(this.issueDisplayValueLabel);
+            this.issueInfo.Controls.Add(this.issueDisplayLabel);
+            this.issueInfo.Location = new System.Drawing.Point(512, 14);
+            this.issueInfo.Name = "issueInfo";
+            this.issueInfo.Size = new System.Drawing.Size(196, 352);
+            this.issueInfo.TabIndex = 6;
+            // 
+            // issueWeightValueLabel
+            // 
+            this.issueWeightValueLabel.AutoSize = true;
+            this.issueWeightValueLabel.Location = new System.Drawing.Point(61, 61);
+            this.issueWeightValueLabel.Name = "issueWeightValueLabel";
+            this.issueWeightValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.issueWeightValueLabel.TabIndex = 3;
+            // 
+            // issueWeightLabel
+            // 
+            this.issueWeightLabel.AutoSize = true;
+            this.issueWeightLabel.Location = new System.Drawing.Point(7, 61);
+            this.issueWeightLabel.Name = "issueWeightLabel";
+            this.issueWeightLabel.Size = new System.Drawing.Size(44, 13);
+            this.issueWeightLabel.TabIndex = 2;
+            this.issueWeightLabel.Text = "Weight:";
+            // 
+            // issueDisplayValueLabel
+            // 
+            this.issueDisplayValueLabel.AutoSize = true;
+            this.issueDisplayValueLabel.Location = new System.Drawing.Point(61, 25);
+            this.issueDisplayValueLabel.Name = "issueDisplayValueLabel";
+            this.issueDisplayValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.issueDisplayValueLabel.TabIndex = 1;
+            // 
+            // issueDisplayLabel
+            // 
+            this.issueDisplayLabel.AutoSize = true;
+            this.issueDisplayLabel.Location = new System.Drawing.Point(7, 25);
+            this.issueDisplayLabel.Name = "issueDisplayLabel";
+            this.issueDisplayLabel.Size = new System.Drawing.Size(44, 13);
+            this.issueDisplayLabel.TabIndex = 0;
+            this.issueDisplayLabel.Text = "Display:";
             // 
             // attributesPanel
             // 
@@ -246,6 +301,17 @@
             this.issueNameTextBox.Size = new System.Drawing.Size(166, 20);
             this.issueNameTextBox.TabIndex = 0;
             // 
+            // editorTree
+            // 
+            this.editorTree.Dock = System.Windows.Forms.DockStyle.Left;
+            this.editorTree.Location = new System.Drawing.Point(3, 14);
+            this.editorTree.Name = "editorTree";
+            this.editorTree.SelectedNode = null;
+            this.editorTree.Size = new System.Drawing.Size(509, 352);
+            this.editorTree.TabIndex = 5;
+            this.editorTree.Visible = false;
+            this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_MouseUp);
+            // 
             // issuesContextMenu
             // 
             this.issuesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -290,15 +356,9 @@
             this.openFileDialog.Filter = "Metric file|*.xml";
             this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
-            // editorTree
+            // issueToolTip
             // 
-            this.editorTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.editorTree.Location = new System.Drawing.Point(3, 14);
-            this.editorTree.Name = "editorTree";
-            this.editorTree.SelectedNode = null;
-            this.editorTree.Size = new System.Drawing.Size(705, 352);
-            this.editorTree.TabIndex = 5;
-            this.editorTree.Visible = false;
+            this.issueToolTip.ToolTipTitle = "Issue Information";
             // 
             // MainWindow
             // 
@@ -314,6 +374,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.mainGroupBox.ResumeLayout(false);
+            this.issueInfo.ResumeLayout(false);
+            this.issueInfo.PerformLayout();
             this.attributesPanel.ResumeLayout(false);
             this.attributesPanel.PerformLayout();
             this.issueNameEditor.ResumeLayout(false);
@@ -350,6 +412,12 @@
         private System.Windows.Forms.TextBox weightTextBox;
         private IssueTreeView editorTree;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
+        private System.Windows.Forms.ToolTip issueToolTip;
+        private System.Windows.Forms.Panel issueInfo;
+        private System.Windows.Forms.Label issueWeightValueLabel;
+        private System.Windows.Forms.Label issueWeightLabel;
+        private System.Windows.Forms.Label issueDisplayValueLabel;
+        private System.Windows.Forms.Label issueDisplayLabel;
     }
 }
 

@@ -36,7 +36,6 @@ namespace Metric_Designer
             issueTreeNode2.weight = 0D;
             editorTree.Nodes.AddRange(new IssueTreeNode[] {
             issueTreeNode2});
-            editorTree.NodeMouseClick += new TreeNodeMouseClickEventHandler(issue_MouseUp);
         }
 
         private void toggleContextMenuItems(bool b)
@@ -61,6 +60,10 @@ namespace Metric_Designer
                 }
                 issuesContextMenu.Show(editorTree, e.Location);
             }
+            else
+            {
+                updateSidePanel();
+            }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,6 +87,7 @@ namespace Metric_Designer
         {
             editorTree.SelectedNode.Text = issueNameTextBox.Text;
             editorTree.Enabled = true;
+            updateSidePanel();
             issueNameEditor.Visible = false;
         }
 
@@ -193,7 +197,12 @@ namespace Metric_Designer
                 ((IssueTreeNode)editorTree.SelectedNode).useWeight = true;
                 ((IssueTreeNode)editorTree.SelectedNode).weight = weight;
             }
+            else
+            {
+                ((IssueTreeNode)editorTree.SelectedNode).useWeight = false;
+            }
             editorTree.Enabled = true;
+            updateSidePanel();
             attributesPanel.Visible = false;
         }
 
@@ -216,6 +225,27 @@ namespace Metric_Designer
         {
             string filename = ((OpenFileDialog)sender).FileName;
             readMetric(filename);
+        }
+
+        private void updateSidePanel()
+        {
+            if (((IssueTreeNode)editorTree.SelectedNode).display)
+            {
+                issueDisplayValueLabel.Text = "Yes";
+            }
+            else
+            {
+                issueDisplayValueLabel.Text = "No";
+            }
+
+            if (((IssueTreeNode)editorTree.SelectedNode).useWeight)
+            {
+                issueWeightValueLabel.Text = ((IssueTreeNode)editorTree.SelectedNode).weight.ToString();
+            }
+            else
+            {
+                issueWeightValueLabel.Text = "No Weight";
+            }
         }
     }
 }
