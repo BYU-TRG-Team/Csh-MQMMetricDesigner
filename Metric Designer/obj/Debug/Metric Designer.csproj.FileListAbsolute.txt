@@ -7,3 +7,4 @@ c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Me
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric Designer.exe
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric Designer.pdb
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric_Designer.MainWindow.resources
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric_Designer.AboutWindow.resources

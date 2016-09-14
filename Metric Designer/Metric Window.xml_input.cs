@@ -10,21 +10,37 @@ namespace Metric_Designer
 {
     partial class MainWindow
     {
-        public void readMetric(string filename)
+        public bool readMetric(string filename)
         {
+            bool ret = true;
             Metric metric = new Metric();
 
             string contents = File.ReadAllText(filename);
 
             XmlReader reader = XmlReader.Create(new StringReader(contents));
             
-            reader.ReadToFollowing("issues");
-            XmlReader issues = reader.ReadSubtree();
-            issues.ReadToDescendant("issue");
-            metric.issues = issueParser(ref issues);
-            reader.Close();
+            try
+            {
+                reader.ReadToFollowing("issues");
+                XmlReader issues = reader.ReadSubtree();
+                issues.ReadToDescendant("issue");
+                metric.issues = issueParser(ref issues);
+                reader.Close();
 
-            setEditorTree(ref metric);
+                setEditorTree(ref metric);
+            } catch (System.Exception)
+            {
+                editorTree.Visible = false;
+                ret = false;
+                errorReading();
+            }
+
+            return ret;
+        }
+
+        private void errorReading()
+        {
+            System.Windows.Forms.MessageBox.Show("The XML file you chose does not seem to be a valid metric file...");
         }
 
         public void setEditorTree(ref Metric metric)

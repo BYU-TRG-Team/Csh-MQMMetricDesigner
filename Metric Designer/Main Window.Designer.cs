@@ -39,6 +39,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainGroupBox = new System.Windows.Forms.GroupBox();
             this.issueInfo = new System.Windows.Forms.Panel();
+            this.issueTypeValueLabel = new System.Windows.Forms.Label();
+            this.issueTypeLabel = new System.Windows.Forms.Label();
             this.issueWeightValueLabel = new System.Windows.Forms.Label();
             this.issueWeightLabel = new System.Windows.Forms.Label();
             this.issueDisplayValueLabel = new System.Windows.Forms.Label();
@@ -51,7 +53,6 @@
             this.issueNameEditor = new System.Windows.Forms.Panel();
             this.renameButton = new System.Windows.Forms.Button();
             this.issueNameTextBox = new System.Windows.Forms.TextBox();
-            this.editorTree = new Metric_Designer.IssueTreeView();
             this.issuesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +60,8 @@
             this.removeIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.issueToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.editorTree = new Metric_Designer.IssueTreeView();
             this.menuStrip1.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
             this.issueInfo.SuspendLayout();
@@ -87,46 +90,56 @@
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Text = "&File";
             // 
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.ShortcutKeyDisplayString = "";
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.openToolStripMenuItem.Text = "Open";
+            this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "&Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(100, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Text = "&About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // mainGroupBox
             // 
@@ -149,6 +162,8 @@
             // 
             this.issueInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.issueInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.issueInfo.Controls.Add(this.issueTypeValueLabel);
+            this.issueInfo.Controls.Add(this.issueTypeLabel);
             this.issueInfo.Controls.Add(this.issueWeightValueLabel);
             this.issueInfo.Controls.Add(this.issueWeightLabel);
             this.issueInfo.Controls.Add(this.issueDisplayValueLabel);
@@ -157,6 +172,23 @@
             this.issueInfo.Name = "issueInfo";
             this.issueInfo.Size = new System.Drawing.Size(196, 352);
             this.issueInfo.TabIndex = 6;
+            // 
+            // issueTypeValueLabel
+            // 
+            this.issueTypeValueLabel.AutoSize = true;
+            this.issueTypeValueLabel.Location = new System.Drawing.Point(75, 14);
+            this.issueTypeValueLabel.Name = "issueTypeValueLabel";
+            this.issueTypeValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.issueTypeValueLabel.TabIndex = 5;
+            // 
+            // issueTypeLabel
+            // 
+            this.issueTypeLabel.AutoSize = true;
+            this.issueTypeLabel.Location = new System.Drawing.Point(7, 14);
+            this.issueTypeLabel.Name = "issueTypeLabel";
+            this.issueTypeLabel.Size = new System.Drawing.Size(62, 13);
+            this.issueTypeLabel.TabIndex = 4;
+            this.issueTypeLabel.Text = "Issue Type:";
             // 
             // issueWeightValueLabel
             // 
@@ -178,7 +210,7 @@
             // issueDisplayValueLabel
             // 
             this.issueDisplayValueLabel.AutoSize = true;
-            this.issueDisplayValueLabel.Location = new System.Drawing.Point(61, 25);
+            this.issueDisplayValueLabel.Location = new System.Drawing.Point(61, 36);
             this.issueDisplayValueLabel.Name = "issueDisplayValueLabel";
             this.issueDisplayValueLabel.Size = new System.Drawing.Size(0, 13);
             this.issueDisplayValueLabel.TabIndex = 1;
@@ -186,7 +218,7 @@
             // issueDisplayLabel
             // 
             this.issueDisplayLabel.AutoSize = true;
-            this.issueDisplayLabel.Location = new System.Drawing.Point(7, 25);
+            this.issueDisplayLabel.Location = new System.Drawing.Point(7, 36);
             this.issueDisplayLabel.Name = "issueDisplayLabel";
             this.issueDisplayLabel.Size = new System.Drawing.Size(44, 13);
             this.issueDisplayLabel.TabIndex = 0;
@@ -301,17 +333,6 @@
             this.issueNameTextBox.Size = new System.Drawing.Size(166, 20);
             this.issueNameTextBox.TabIndex = 0;
             // 
-            // editorTree
-            // 
-            this.editorTree.Dock = System.Windows.Forms.DockStyle.Left;
-            this.editorTree.Location = new System.Drawing.Point(3, 14);
-            this.editorTree.Name = "editorTree";
-            this.editorTree.SelectedNode = null;
-            this.editorTree.Size = new System.Drawing.Size(509, 352);
-            this.editorTree.TabIndex = 5;
-            this.editorTree.Visible = false;
-            this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_MouseUp);
-            // 
             // issuesContextMenu
             // 
             this.issuesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -360,6 +381,23 @@
             // 
             this.issueToolTip.ToolTipTitle = "Issue Information";
             // 
+            // saveFileDialog
+            // 
+            this.saveFileDialog.DefaultExt = "xml";
+            this.saveFileDialog.Filter = "Metric file|*.xml";
+            this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog_FileOk);
+            // 
+            // editorTree
+            // 
+            this.editorTree.Dock = System.Windows.Forms.DockStyle.Left;
+            this.editorTree.Location = new System.Drawing.Point(3, 14);
+            this.editorTree.Name = "editorTree";
+            this.editorTree.SelectedNode = null;
+            this.editorTree.Size = new System.Drawing.Size(509, 352);
+            this.editorTree.TabIndex = 5;
+            this.editorTree.Visible = false;
+            this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_MouseUp);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,6 +409,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainWindow";
             this.Text = "Metric Designer";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.mainGroupBox.ResumeLayout(false);
@@ -418,6 +457,9 @@
         private System.Windows.Forms.Label issueWeightLabel;
         private System.Windows.Forms.Label issueDisplayValueLabel;
         private System.Windows.Forms.Label issueDisplayLabel;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog;
+        private System.Windows.Forms.Label issueTypeValueLabel;
+        private System.Windows.Forms.Label issueTypeLabel;
     }
 }
 

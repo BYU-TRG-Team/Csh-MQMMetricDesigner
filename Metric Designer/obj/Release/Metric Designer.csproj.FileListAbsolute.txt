@@ -1,0 +1,9 @@
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\bin\Release\Metric Designer.exe.config
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\bin\Release\Metric Designer.exe
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\bin\Release\Metric Designer.pdb
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Release\Metric_Designer.AboutWindow.resources
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Release\Metric_Designer.MainWindow.resources
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Release\Metric_Designer.Properties.Resources.resources
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Release\Metric Designer.csproj.GenerateResource.Cache
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Release\Metric Designer.exe
+C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Release\Metric Designer.pdb

@@ -18,33 +18,6 @@ namespace Metric_Designer
             PostInitialize();
         }
 
-        private void PostInitialize()
-        {
-            IssueTreeNode issueTreeNode1 = new IssueTreeNode("Sample Issue");
-            IssueTreeNode issueTreeNode2 = new IssueTreeNode("Issues", new System.Windows.Forms.TreeNode[] {
-            issueTreeNode1});
-
-            issueTreeNode1.display = false;
-            issueTreeNode1.Name = "issue0";
-            issueTreeNode1.Text = "Sample Issue";
-            issueTreeNode1.useWeight = false;
-            issueTreeNode1.weight = 0D;
-            issueTreeNode2.display = true;
-            issueTreeNode2.Name = "Issues";
-            issueTreeNode2.Text = "Issues";
-            issueTreeNode2.useWeight = false;
-            issueTreeNode2.weight = 0D;
-            editorTree.Nodes.AddRange(new IssueTreeNode[] {
-            issueTreeNode2});
-        }
-
-        private void toggleContextMenuItems(bool b)
-        {
-            issuesContextMenu.Items[0].Enabled = b;
-            issuesContextMenu.Items[1].Enabled = b;
-            issuesContextMenu.Items[3].Enabled = b;
-        }
-
         private void issue_MouseUp(object sender, TreeNodeMouseClickEventArgs e)
         {
             editorTree.SelectedNode = (IssueTreeNode)e.Node;
@@ -68,6 +41,10 @@ namespace Metric_Designer
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            editorTree.Nodes[0].Nodes.Clear();
+            IssueTreeNode sampleIssue = new IssueTreeNode("Sample Issue");
+            editorTree.Nodes[0].Nodes.Add(sampleIssue);
+            editorTree.Nodes[0].Expand();
             editorTree.Visible = true;
         }
 
@@ -78,9 +55,7 @@ namespace Metric_Designer
 
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            issueNameTextBox.Text = editorTree.SelectedNode.Text;
-            editorTree.Enabled = false;
-            issueNameEditor.Visible = true;
+            renameIssue();
         }
 
         private void renameButton_Click(object sender, EventArgs e)
@@ -146,36 +121,7 @@ namespace Metric_Designer
                 saveAttributesButton.Enabled = false;
                 MessageBox.Show("Weights must be a value between 0.1 and 2.0");
             }
-        }
-
-        private bool validateWeightValue()
-        {
-            double[] weights = new double[20] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0 };
-            double input;
-            bool ret;
-
-            if (Double.TryParse(weightTextBox.Text, out input) && weights.Contains<double>(input))
-            {
-                ret = true;
-            }
-            else
-            {
-                ret = false;
-            }
-
-            if (!ret)
-            {
-                weightTextBox.ForeColor = System.Drawing.Color.Red;
-                saveAttributesButton.Enabled = false;
-            }
-            else
-            {
-                weightTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-                saveAttributesButton.Enabled = true;
-            }
-
-            return ret;
-        }
+        }    
 
         private void weightTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -208,7 +154,12 @@ namespace Metric_Designer
 
         private void addChildToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ((IssueTreeNode)editorTree.SelectedNode).Nodes.Add(new IssueTreeNode("New Issue"));
+            IssueTreeNode newIssue = new IssueTreeNode("New Issue");
+            newIssue.display = true;
+            ((IssueTreeNode)editorTree.SelectedNode).Nodes.Add(newIssue);
+            editorTree.SelectedNode.Expand();
+            editorTree.SelectedNode = (IssueTreeNode)editorTree.SelectedNode.Nodes[(editorTree.SelectedNode.Nodes.Count - 1)];
+            updateSidePanel();
         }
 
         private void removeIssueToolStripMenuItem_Click(object sender, EventArgs e)
@@ -225,27 +176,42 @@ namespace Metric_Designer
         {
             string filename = ((OpenFileDialog)sender).FileName;
             readMetric(filename);
+            editorTree.Nodes[0].Expand();
         }
 
-        private void updateSidePanel()
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (((IssueTreeNode)editorTree.SelectedNode).display)
-            {
-                issueDisplayValueLabel.Text = "Yes";
-            }
-            else
-            {
-                issueDisplayValueLabel.Text = "No";
-            }
+            saveFileDialog.ShowDialog();
+        }
 
-            if (((IssueTreeNode)editorTree.SelectedNode).useWeight)
+        private void saveFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            string filename = ((SaveFileDialog)sender).FileName;
+            toXML(filename);
+        }
+
+        private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (editorTree.Visible)
             {
-                issueWeightValueLabel.Text = ((IssueTreeNode)editorTree.SelectedNode).weight.ToString();
+                DialogResult result = MessageBox.Show("Would you like to save your metric before leaving?", "Prevent Data Loss", MessageBoxButtons.YesNoCancel);
+
+                switch (result)
+                {
+                    case DialogResult.Yes:
+                        saveFileDialog.ShowDialog();
+                        break;
+                    case DialogResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                }
             }
-            else
-            {
-                issueWeightValueLabel.Text = "No Weight";
-            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutWindow about = new AboutWindow();
+            about.Show();
         }
     }
 }

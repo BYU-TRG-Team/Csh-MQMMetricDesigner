@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About Window.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About Window.Designer.cs">
+      <DependentUpon>About Window.cs</DependentUpon>
+    </Compile>
     <Compile Include="Issue.cs" />
     <Compile Include="IssueTreeNode.cs">
       <SubType>Component</SubType>
@@ -56,12 +62,21 @@
     <Compile Include="Main Window.Designer.cs">
       <DependentUpon>Main Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="Metric Window.xml.cs">
+    <Compile Include="Main Window.functions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metric Window.xml_input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metric Window.xml_output.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Metric.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="About Window.resx">
+      <DependentUpon>About Window.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main Window.resx">
       <DependentUpon>Main Window.cs</DependentUpon>
     </EmbeddedResource>
