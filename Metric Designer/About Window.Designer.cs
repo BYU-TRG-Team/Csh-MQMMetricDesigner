@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.versionLabel = new System.Windows.Forms.Label();
-            this.createdByLabel = new System.Windows.Forms.Label();
-            this.emailLabel = new System.Windows.Forms.LinkLabel();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.purposeLabel = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
+            this.purposeLabel = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.emailLabel = new System.Windows.Forms.LinkLabel();
+            this.createdByLabel = new System.Windows.Forms.Label();
+            this.versionLabel = new System.Windows.Forms.Label();
+            this.titleLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,55 +54,14 @@
             this.panel1.Size = new System.Drawing.Size(361, 221);
             this.panel1.TabIndex = 1;
             // 
-            // titleLabel
+            // dateLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(66, 9);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(236, 36);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Metric Designer";
-            // 
-            // versionLabel
-            // 
-            this.versionLabel.AutoSize = true;
-            this.versionLabel.Location = new System.Drawing.Point(153, 55);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(34, 13);
-            this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = "v1.00";
-            // 
-            // createdByLabel
-            // 
-            this.createdByLabel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createdByLabel.Location = new System.Drawing.Point(14, 80);
-            this.createdByLabel.Name = "createdByLabel";
-            this.createdByLabel.Size = new System.Drawing.Size(335, 80);
-            this.createdByLabel.TabIndex = 2;
-            this.createdByLabel.Text = "Created by: \r\n  James Hayes\r\n  BYU Translation Research Group";
-            // 
-            // emailLabel
-            // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(263, 104);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(87, 13);
-            this.emailLabel.TabIndex = 3;
-            this.emailLabel.TabStop = true;
-            this.emailLabel.Text = "jsh226@byu.edu";
-            this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(263, 122);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(94, 13);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "byutrg@gmail.com";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Location = new System.Drawing.Point(276, 205);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(82, 13);
+            this.dateLabel.TabIndex = 6;
+            this.dateLabel.Text = "Released: 2016";
             // 
             // purposeLabel
             // 
@@ -113,14 +72,57 @@
             this.purposeLabel.TabIndex = 5;
             this.purposeLabel.Text = "Created for use with the MQM Scorecard";
             // 
-            // dateLabel
+            // linkLabel1
             // 
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(276, 205);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(82, 13);
-            this.dateLabel.TabIndex = 6;
-            this.dateLabel.Text = "Released: 2016";
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(239, 122);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(119, 17);
+            this.linkLabel1.TabIndex = 4;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "byutrg@gmail.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailLabel.Location = new System.Drawing.Point(253, 104);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(105, 17);
+            this.emailLabel.TabIndex = 3;
+            this.emailLabel.TabStop = true;
+            this.emailLabel.Text = "jsh226@byu.edu";
+            this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
+            // 
+            // createdByLabel
+            // 
+            this.createdByLabel.Font = new System.Drawing.Font("Times New Roman", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createdByLabel.Location = new System.Drawing.Point(14, 82);
+            this.createdByLabel.Name = "createdByLabel";
+            this.createdByLabel.Size = new System.Drawing.Size(335, 80);
+            this.createdByLabel.TabIndex = 2;
+            this.createdByLabel.Text = "Created by: \r\n  James Hayes\r\n  BYU Translation Research Group";
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.Location = new System.Drawing.Point(153, 55);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(34, 13);
+            this.versionLabel.TabIndex = 1;
+            this.versionLabel.Text = "v1.01";
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(66, 9);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(236, 36);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Metric Designer";
             // 
             // AboutWindow
             // 

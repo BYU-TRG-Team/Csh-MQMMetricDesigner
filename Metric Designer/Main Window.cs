@@ -35,7 +35,10 @@ namespace Metric_Designer
             }
             else
             {
-                updateSidePanel();
+                if (editorTree.Nodes[0] != editorTree.SelectedNode)
+                {
+                    updateSidePanel();
+                }
             }
         }
 
@@ -43,8 +46,11 @@ namespace Metric_Designer
         {
             editorTree.Nodes[0].Nodes.Clear();
             IssueTreeNode sampleIssue = new IssueTreeNode("Sample Issue");
-            editorTree.Nodes[0].Nodes.Add(sampleIssue);
+            sampleIssue.display = true;
+            int index = editorTree.Nodes[0].Nodes.Add(sampleIssue);
             editorTree.Nodes[0].Expand();
+            editorTree.SelectedNode = (IssueTreeNode)editorTree.Nodes[0].Nodes[index];
+            updateSidePanel();
             editorTree.Visible = true;
         }
 
@@ -56,6 +62,8 @@ namespace Metric_Designer
         private void renameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             renameIssue();
+            issueNameTextBox.Focus();
+            issueNameTextBox.Select();
         }
 
         private void renameButton_Click(object sender, EventArgs e)
@@ -156,9 +164,12 @@ namespace Metric_Designer
         {
             IssueTreeNode newIssue = new IssueTreeNode("New Issue");
             newIssue.display = true;
-            ((IssueTreeNode)editorTree.SelectedNode).Nodes.Add(newIssue);
+            int index = ((IssueTreeNode)editorTree.SelectedNode).Nodes.Add(newIssue);
             editorTree.SelectedNode.Expand();
-            editorTree.SelectedNode = (IssueTreeNode)editorTree.SelectedNode.Nodes[(editorTree.SelectedNode.Nodes.Count - 1)];
+            editorTree.SelectedNode = (IssueTreeNode)editorTree.SelectedNode.Nodes[index];
+            renameIssue();
+            issueNameTextBox.Focus();
+            issueNameTextBox.Select();
             updateSidePanel();
         }
 
@@ -212,6 +223,16 @@ namespace Metric_Designer
         {
             AboutWindow about = new AboutWindow();
             about.Show();
+        }
+
+        private void issueNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                renameButton.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }
