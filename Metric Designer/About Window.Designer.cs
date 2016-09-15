@@ -88,12 +88,12 @@
             // 
             this.emailLabel.AutoSize = true;
             this.emailLabel.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailLabel.Location = new System.Drawing.Point(253, 104);
+            this.emailLabel.Location = new System.Drawing.Point(207, 104);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(105, 17);
+            this.emailLabel.Size = new System.Drawing.Size(150, 17);
             this.emailLabel.TabIndex = 3;
             this.emailLabel.TabStop = true;
-            this.emailLabel.Text = "jsh226@byu.edu";
+            this.emailLabel.Text = "james.s.hayes@byu.edu";
             this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
             // 
             // createdByLabel
@@ -112,7 +112,7 @@
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(34, 13);
             this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = "v1.01";
+            this.versionLabel.Text = "v1.02";
             // 
             // titleLabel
             // 
