@@ -54,6 +54,7 @@
             this.issueNameEditor = new System.Windows.Forms.Panel();
             this.renameButton = new System.Windows.Forms.Button();
             this.issueNameTextBox = new System.Windows.Forms.TextBox();
+            this.editorTree = new Metric_Designer.IssueTreeView();
             this.issuesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +63,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.issueToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.editorTree = new Metric_Designer.IssueTreeView();
             this.menuStrip.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
             this.issueInfo.SuspendLayout();
@@ -340,6 +340,20 @@
             this.issueNameTextBox.WordWrap = false;
             this.issueNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.issueNameTextBox_KeyDown);
             // 
+            // editorTree
+            // 
+            this.editorTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.editorTree.BackColor = System.Drawing.Color.White;
+            this.editorTree.Location = new System.Drawing.Point(4, 7);
+            this.editorTree.Name = "editorTree";
+            this.editorTree.SelectedNode = null;
+            this.editorTree.Size = new System.Drawing.Size(510, 358);
+            this.editorTree.TabIndex = 5;
+            this.editorTree.Visible = false;
+            this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_NodeMouseClick);
+            // 
             // issuesContextMenu
             // 
             this.issuesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -348,33 +362,33 @@
             this.addChildToolStripMenuItem,
             this.removeIssueToolStripMenuItem});
             this.issuesContextMenu.Name = "issuesContextMenu";
-            this.issuesContextMenu.Size = new System.Drawing.Size(128, 92);
+            this.issuesContextMenu.Size = new System.Drawing.Size(153, 114);
             // 
             // renameToolStripMenuItem
             // 
             this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.renameToolStripMenuItem.Text = "Rename";
             this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
             // 
             // attributesToolStripMenuItem
             // 
             this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.attributesToolStripMenuItem.Text = "Attributes";
             this.attributesToolStripMenuItem.Click += new System.EventHandler(this.attributesButton_Click);
             // 
             // addChildToolStripMenuItem
             // 
             this.addChildToolStripMenuItem.Name = "addChildToolStripMenuItem";
-            this.addChildToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.addChildToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addChildToolStripMenuItem.Text = "Add Child";
             this.addChildToolStripMenuItem.Click += new System.EventHandler(this.addChildToolStripMenuItem_Click);
             // 
             // removeIssueToolStripMenuItem
             // 
             this.removeIssueToolStripMenuItem.Name = "removeIssueToolStripMenuItem";
-            this.removeIssueToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.removeIssueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeIssueToolStripMenuItem.Text = "Remove";
             this.removeIssueToolStripMenuItem.Click += new System.EventHandler(this.removeIssueToolStripMenuItem_Click);
             // 
@@ -393,20 +407,6 @@
             this.saveFileDialog.DefaultExt = "xml";
             this.saveFileDialog.Filter = "Metric file|*.xml";
             this.saveFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog_FileOk);
-            // 
-            // editorTree
-            // 
-            this.editorTree.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.editorTree.BackColor = System.Drawing.Color.White;
-            this.editorTree.Location = new System.Drawing.Point(4, 7);
-            this.editorTree.Name = "editorTree";
-            this.editorTree.SelectedNode = null;
-            this.editorTree.Size = new System.Drawing.Size(510, 358);
-            this.editorTree.TabIndex = 5;
-            this.editorTree.Visible = false;
-            this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_MouseUp);
             // 
             // MainWindow
             // 

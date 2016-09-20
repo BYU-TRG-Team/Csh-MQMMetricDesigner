@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Metric_Designer
 {
@@ -28,8 +25,15 @@ namespace Metric_Designer
             issueTreeNode2});
         }
 
-        private void toggleContextMenuItems(bool b)
+        private void toggleContextMenuItems()
         {
+            bool b = true; 
+
+            if (editorTree.SelectedNode != null && editorTree.SelectedNode.Level == 0)
+            {
+                b = false;
+            }
+
             issuesContextMenu.Items[0].Enabled = b;
             issuesContextMenu.Items[1].Enabled = b;
             issuesContextMenu.Items[3].Enabled = b;
@@ -87,11 +91,44 @@ namespace Metric_Designer
             }
         }
 
+        private void resetSidePanel()
+        {
+            issueTypeValueLabel.Text = "";
+            issueDisplayValueLabel.Text = "";
+            issueWeightValueLabel.Text = "";
+        }
+
         private void renameIssue()
         {
             issueNameTextBox.Text = editorTree.SelectedNode.Text;
             editorTree.Enabled = false;
             issueNameEditor.Visible = true;
+        }
+
+        private void setCheckedDisplay(bool check, IssueTreeNode node)
+        {
+            foreach (IssueTreeNode n in node.Nodes)
+            {
+                n.display = check;
+                if (n.Nodes.Count > 0) { setCheckedDisplay(check, node); }
+            }
+        }
+
+        private void highlightNode(IssueTreeNode node)
+        {
+            editorTree.SelectedNode = node;
+
+            editorTree.SelectedNode.BackColor = System.Drawing.SystemColors.Highlight;
+            editorTree.SelectedNode.ForeColor = System.Drawing.Color.White;
+        }
+
+        private void resetHighlight()
+        {
+            if (editorTree.SelectedNode != null)
+            {
+                editorTree.SelectedNode.BackColor = System.Drawing.Color.Empty;
+                editorTree.SelectedNode.ForeColor = System.Drawing.Color.Empty; 
+            }
         }
     }
 }

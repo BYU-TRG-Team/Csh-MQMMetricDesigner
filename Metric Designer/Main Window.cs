@@ -18,28 +18,22 @@ namespace Metric_Designer
             PostInitialize();
         }
 
-        private void issue_MouseUp(object sender, TreeNodeMouseClickEventArgs e)
+        private void issue_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            resetHighlight();
+            editorTree.Enabled = false;
             editorTree.SelectedNode = (IssueTreeNode)e.Node;
             if (e.Button == MouseButtons.Right)
             {
-                if (e.Node.Level == 0)
-                {
-                    toggleContextMenuItems(false);
-                }
-                else
-                {
-                    toggleContextMenuItems(true);
-                }
+                toggleContextMenuItems();
                 issuesContextMenu.Show(editorTree, e.Location);
+                highlightNode(e.Node as IssueTreeNode);
             }
-            else
-            {
-                if (editorTree.Nodes[0] != editorTree.SelectedNode)
-                {
-                    updateSidePanel();
-                }
-            }
+
+            if (editorTree.SelectedNode != editorTree.Nodes[0]) { updateSidePanel(); }
+            else { resetSidePanel(); }
+
+            editorTree.Enabled = true;
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -162,11 +156,14 @@ namespace Metric_Designer
 
         private void addChildToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            resetHighlight();
             IssueTreeNode newIssue = new IssueTreeNode("New Issue");
             newIssue.display = true;
             int index = ((IssueTreeNode)editorTree.SelectedNode).Nodes.Add(newIssue);
             editorTree.SelectedNode.Expand();
             editorTree.SelectedNode = (IssueTreeNode)editorTree.SelectedNode.Nodes[index];
+            highlightNode(editorTree.SelectedNode);
+
             renameIssue();
             issueNameTextBox.Focus();
             issueNameTextBox.Select();
@@ -176,6 +173,7 @@ namespace Metric_Designer
         private void removeIssueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ((IssueTreeNode)editorTree.SelectedNode).Remove();
+            resetSidePanel();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)

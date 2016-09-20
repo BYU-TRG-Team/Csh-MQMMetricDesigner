@@ -1,7 +1,6 @@
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\bin\Debug\Metric Designer.exe.config
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\bin\Debug\Metric Designer.exe
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\bin\Debug\Metric Designer.pdb
-c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric Designer.csprojResolveAssemblyReference.cache
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric_Designer.Properties.Resources.resources
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric Designer.csproj.GenerateResource.Cache
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric Designer.exe

@@ -1,17 +1,9 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Metric_Designer
 {
-    public class IssueTreeView : TreeView
-    {
-        public new IssueTreeNode SelectedNode { get; set; }
-    }
-
     public class IssueTreeNode : TreeNode, IDictionaryEnumerator
     {
         public bool display { get; set; }

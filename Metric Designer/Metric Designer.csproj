@@ -74,7 +74,8 @@
       <DependentUpon>About Window.cs</DependentUpon>
     </Compile>
     <Compile Include="Issue.cs" />
-    <Compile Include="IssueTreeNode.cs">
+    <Compile Include="IssueTreeNode.cs" />
+    <Compile Include="IssueTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Main Window.cs">
