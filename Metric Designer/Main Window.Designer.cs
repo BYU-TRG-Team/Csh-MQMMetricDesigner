@@ -56,10 +56,10 @@
             this.issueNameTextBox = new System.Windows.Forms.TextBox();
             this.editorTree = new Metric_Designer.IssueTreeView();
             this.issuesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.attributesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addChildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeIssueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.renameContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.attributesContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addChildContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.removeIssueContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.issueToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
@@ -148,9 +148,9 @@
             this.mainGroupBox.AutoSize = true;
             this.mainGroupBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.mainGroupBox.BackColor = System.Drawing.Color.White;
+            this.mainGroupBox.Controls.Add(this.issueNameEditor);
             this.mainGroupBox.Controls.Add(this.issueInfo);
             this.mainGroupBox.Controls.Add(this.attributesPanel);
-            this.mainGroupBox.Controls.Add(this.issueNameEditor);
             this.mainGroupBox.Controls.Add(this.editorTree);
             this.mainGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainGroupBox.Location = new System.Drawing.Point(0, 25);
@@ -353,44 +353,45 @@
             this.editorTree.TabIndex = 5;
             this.editorTree.Visible = false;
             this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_NodeMouseClick);
+            this.editorTree.KeyDown += new System.Windows.Forms.KeyEventHandler(this.editorTree_KeyDown);
             // 
             // issuesContextMenu
             // 
             this.issuesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.renameToolStripMenuItem,
-            this.attributesToolStripMenuItem,
-            this.addChildToolStripMenuItem,
-            this.removeIssueToolStripMenuItem});
+            this.renameContextMenuItem,
+            this.attributesContextMenuItem,
+            this.addChildContextMenuItem,
+            this.removeIssueContextMenuItem});
             this.issuesContextMenu.Name = "issuesContextMenu";
-            this.issuesContextMenu.Size = new System.Drawing.Size(153, 114);
+            this.issuesContextMenu.Size = new System.Drawing.Size(128, 92);
             // 
-            // renameToolStripMenuItem
+            // renameContextMenuItem
             // 
-            this.renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            this.renameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.renameToolStripMenuItem.Text = "Rename";
-            this.renameToolStripMenuItem.Click += new System.EventHandler(this.renameToolStripMenuItem_Click);
+            this.renameContextMenuItem.Name = "renameContextMenuItem";
+            this.renameContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.renameContextMenuItem.Text = "Rename";
+            this.renameContextMenuItem.Click += new System.EventHandler(this.renameContextMenuItem_Click);
             // 
-            // attributesToolStripMenuItem
+            // attributesContextMenuItem
             // 
-            this.attributesToolStripMenuItem.Name = "attributesToolStripMenuItem";
-            this.attributesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.attributesToolStripMenuItem.Text = "Attributes";
-            this.attributesToolStripMenuItem.Click += new System.EventHandler(this.attributesButton_Click);
+            this.attributesContextMenuItem.Name = "attributesContextMenuItem";
+            this.attributesContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.attributesContextMenuItem.Text = "Attributes";
+            this.attributesContextMenuItem.Click += new System.EventHandler(this.attributesContextMenuItem_Click);
             // 
-            // addChildToolStripMenuItem
+            // addChildContextMenuItem
             // 
-            this.addChildToolStripMenuItem.Name = "addChildToolStripMenuItem";
-            this.addChildToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.addChildToolStripMenuItem.Text = "Add Child";
-            this.addChildToolStripMenuItem.Click += new System.EventHandler(this.addChildToolStripMenuItem_Click);
+            this.addChildContextMenuItem.Name = "addChildContextMenuItem";
+            this.addChildContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.addChildContextMenuItem.Text = "Add Child";
+            this.addChildContextMenuItem.Click += new System.EventHandler(this.addChildContextMenuItem_Click);
             // 
-            // removeIssueToolStripMenuItem
+            // removeIssueContextMenuItem
             // 
-            this.removeIssueToolStripMenuItem.Name = "removeIssueToolStripMenuItem";
-            this.removeIssueToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.removeIssueToolStripMenuItem.Text = "Remove";
-            this.removeIssueToolStripMenuItem.Click += new System.EventHandler(this.removeIssueToolStripMenuItem_Click);
+            this.removeIssueContextMenuItem.Name = "removeIssueContextMenuItem";
+            this.removeIssueContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.removeIssueContextMenuItem.Text = "Remove";
+            this.removeIssueContextMenuItem.Click += new System.EventHandler(this.removeIssueContextMenuItem_Click);
             // 
             // openFileDialog
             // 
@@ -448,10 +449,10 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.GroupBox mainGroupBox;
         private System.Windows.Forms.ContextMenuStrip issuesContextMenu;
-        private System.Windows.Forms.ToolStripMenuItem addChildToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeIssueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem attributesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addChildContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem removeIssueContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem attributesContextMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem renameContextMenuItem;
         private System.Windows.Forms.Panel issueNameEditor;
         private System.Windows.Forms.Button renameButton;
         private System.Windows.Forms.TextBox issueNameTextBox;

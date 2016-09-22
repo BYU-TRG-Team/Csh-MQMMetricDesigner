@@ -5,6 +5,8 @@ namespace Metric_Designer
 {
     partial class MainWindow
     {
+        private IssueTreeNode nodeToRename;
+
         private void PostInitialize()
         {
             IssueTreeNode issueTreeNode1 = new IssueTreeNode("Sample Issue");
@@ -98,11 +100,56 @@ namespace Metric_Designer
             issueWeightValueLabel.Text = "";
         }
 
-        private void renameIssue()
+        private void renameEditor()
         {
-            issueNameTextBox.Text = editorTree.SelectedNode.Text;
+            renameEditor(editorTree.SelectedNode);
+        }
+
+        private void renameEditor(IssueTreeNode node)
+        {
+            nodeToRename = node;
+            issueNameTextBox.Text = node.Text;
             editorTree.Enabled = false;
             issueNameEditor.Visible = true;
+            issueNameTextBox.Focus();
+            issueNameTextBox.Select();
+        }
+
+        private void attributeEditor()
+        {
+            displayCheckBox.Checked = (editorTree.SelectedNode).display;
+
+            if ((editorTree.SelectedNode).useWeight)
+            {
+                issueWeightCheckBox.Checked = true;
+                weightTextBox.Text = (editorTree.SelectedNode).weight.ToString();
+            }
+            else
+            {
+                issueWeightCheckBox.Checked = false;
+            }
+            editorTree.Enabled = false;
+            attributesPanel.Visible = true;
+        }
+
+        private void addChild()
+        {
+            resetHighlight();
+            IssueTreeNode newIssue = new IssueTreeNode("New Issue");
+            newIssue.display = true;
+            renameEditor(newIssue);
+            int index = editorTree.SelectedNode.Nodes.Add(newIssue);
+            editorTree.SelectedNode.Expand();
+            IssueTreeNode previousNode = (editorTree.SelectedNode != null) ? editorTree.SelectedNode : editorTree.Nodes[0] as IssueTreeNode;
+            editorTree.SelectedNode = previousNode;
+            updateSidePanel();
+        }
+
+        private void removeIssue()
+        {
+            editorTree.SelectedNode.Remove();
+            resetSidePanel();
+            editorTree.Focus();
         }
 
         private void setCheckedDisplay(bool check, IssueTreeNode node)
@@ -120,6 +167,8 @@ namespace Metric_Designer
 
             editorTree.SelectedNode.BackColor = System.Drawing.SystemColors.Highlight;
             editorTree.SelectedNode.ForeColor = System.Drawing.Color.White;
+
+            editorTree.Focus();
         }
 
         private void resetHighlight()

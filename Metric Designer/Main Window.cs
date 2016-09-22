@@ -46,6 +46,7 @@ namespace Metric_Designer
             editorTree.SelectedNode = (IssueTreeNode)editorTree.Nodes[0].Nodes[index];
             updateSidePanel();
             editorTree.Visible = true;
+            editorTree.Focus();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,36 +54,23 @@ namespace Metric_Designer
             Application.Exit();
         }
 
-        private void renameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void renameContextMenuItem_Click(object sender, EventArgs e)
         {
-            renameIssue();
-            issueNameTextBox.Focus();
-            issueNameTextBox.Select();
+            renameEditor();
         }
 
         private void renameButton_Click(object sender, EventArgs e)
         {
-            editorTree.SelectedNode.Text = issueNameTextBox.Text;
+            nodeToRename.Text = issueNameTextBox.Text;
             editorTree.Enabled = true;
             updateSidePanel();
             issueNameEditor.Visible = false;
+            editorTree.Focus();
         }
 
-        private void attributesButton_Click(object sender, EventArgs e)
+        private void attributesContextMenuItem_Click(object sender, EventArgs e)
         {
-            displayCheckBox.Checked = ((IssueTreeNode)editorTree.SelectedNode).display;
-
-            if (((IssueTreeNode)editorTree.SelectedNode).useWeight)
-            {
-                issueWeightCheckBox.Checked = true;
-                weightTextBox.Text = ((IssueTreeNode)editorTree.SelectedNode).weight.ToString();
-            }
-            else
-            {
-                issueWeightCheckBox.Checked = false;
-            }
-            editorTree.Enabled = false;
-            attributesPanel.Visible = true;
+            attributeEditor();
         }
 
         private void issueWeightCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -152,28 +140,17 @@ namespace Metric_Designer
             editorTree.Enabled = true;
             updateSidePanel();
             attributesPanel.Visible = false;
+            editorTree.Focus();
         }
 
-        private void addChildToolStripMenuItem_Click(object sender, EventArgs e)
+        private void addChildContextMenuItem_Click(object sender, EventArgs e)
         {
-            resetHighlight();
-            IssueTreeNode newIssue = new IssueTreeNode("New Issue");
-            newIssue.display = true;
-            int index = ((IssueTreeNode)editorTree.SelectedNode).Nodes.Add(newIssue);
-            editorTree.SelectedNode.Expand();
-            editorTree.SelectedNode = (IssueTreeNode)editorTree.SelectedNode.Nodes[index];
-            highlightNode(editorTree.SelectedNode);
-
-            renameIssue();
-            issueNameTextBox.Focus();
-            issueNameTextBox.Select();
-            updateSidePanel();
+            addChild();
         }
 
-        private void removeIssueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void removeIssueContextMenuItem_Click(object sender, EventArgs e)
         {
-            ((IssueTreeNode)editorTree.SelectedNode).Remove();
-            resetSidePanel();
+            removeIssue();
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +163,7 @@ namespace Metric_Designer
             string filename = ((OpenFileDialog)sender).FileName;
             readMetric(filename);
             editorTree.Nodes[0].Expand();
+            editorTree.Focus();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -228,6 +206,38 @@ namespace Metric_Designer
             if (e.KeyCode == Keys.Enter)
             {
                 renameButton.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void editorTree_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control)
+            {
+                if (editorTree.SelectedNode.Parent != null)
+                {
+                    switch (e.KeyCode)
+                    {
+                        case Keys.R:
+                            renameEditor();
+                            break;
+                        case Keys.A:
+                            attributeEditor();
+                            break;
+                        case Keys.C:
+                            addChild();
+                            break;
+                        case Keys.D:
+                            removeIssue();
+                            break;
+                    }
+                }
+                else
+                {
+                    if (e.KeyCode == Keys.C) { addChild(); }
+                }
+
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
