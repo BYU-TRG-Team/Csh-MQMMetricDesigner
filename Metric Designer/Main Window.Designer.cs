@@ -36,9 +36,18 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.importFromTypologyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.typologyXMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.otherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadSchemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.validateMetricFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainGroupBox = new System.Windows.Forms.GroupBox();
+            this.issueNameEditor = new System.Windows.Forms.Panel();
+            this.renameButton = new System.Windows.Forms.Button();
+            this.issueNameTextBox = new System.Windows.Forms.TextBox();
             this.issueInfo = new System.Windows.Forms.Panel();
             this.issueTypeValueLabel = new System.Windows.Forms.Label();
             this.issueTypeLabel = new System.Windows.Forms.Label();
@@ -51,9 +60,6 @@
             this.issueWeightCheckBox = new System.Windows.Forms.CheckBox();
             this.saveAttributesButton = new System.Windows.Forms.Button();
             this.displayCheckBox = new System.Windows.Forms.CheckBox();
-            this.issueNameEditor = new System.Windows.Forms.Panel();
-            this.renameButton = new System.Windows.Forms.Button();
-            this.issueNameTextBox = new System.Windows.Forms.TextBox();
             this.editorTree = new Metric_Designer.IssueTreeView();
             this.issuesContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.renameContextMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -65,22 +71,25 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.menuStrip.SuspendLayout();
             this.mainGroupBox.SuspendLayout();
+            this.issueNameEditor.SuspendLayout();
             this.issueInfo.SuspendLayout();
             this.attributesPanel.SuspendLayout();
-            this.issueNameEditor.SuspendLayout();
             this.issuesContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
             // 
             this.menuStrip.BackColor = System.Drawing.Color.White;
+            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.otherToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(6, 4, 0, 2);
-            this.menuStrip.Size = new System.Drawing.Size(711, 25);
+            this.menuStrip.Padding = new System.Windows.Forms.Padding(16, 10, 0, 5);
+            this.menuStrip.Size = new System.Drawing.Size(1896, 63);
             this.menuStrip.TabIndex = 0;
             // 
             // fileToolStripMenuItem
@@ -90,11 +99,13 @@
             this.openToolStripMenuItem,
             this.saveToolStripMenuItem,
             this.toolStripSeparator1,
+            this.importFromTypologyToolStripMenuItem,
+            this.toolStripSeparator2,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(87, 48);
             this.fileToolStripMenuItem.Text = "&File";
             // 
             // newToolStripMenuItem
@@ -102,7 +113,7 @@
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeyDisplayString = "";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(356, 54);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -110,7 +121,7 @@
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.O)));
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(356, 54);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
@@ -118,28 +129,71 @@
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(356, 54);
             this.saveToolStripMenuItem.Text = "&Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(353, 6);
+            // 
+            // importFromTypologyToolStripMenuItem
+            // 
+            this.importFromTypologyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.typologyXMLToolStripMenuItem});
+            this.importFromTypologyToolStripMenuItem.Name = "importFromTypologyToolStripMenuItem";
+            this.importFromTypologyToolStripMenuItem.Size = new System.Drawing.Size(356, 54);
+            this.importFromTypologyToolStripMenuItem.Text = "Import";
+            // 
+            // typologyXMLToolStripMenuItem
+            // 
+            this.typologyXMLToolStripMenuItem.Name = "typologyXMLToolStripMenuItem";
+            this.typologyXMLToolStripMenuItem.Size = new System.Drawing.Size(374, 54);
+            this.typologyXMLToolStripMenuItem.Text = "Typology XML";
+            this.typologyXMLToolStripMenuItem.Click += new System.EventHandler(this.typologyXMLToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(353, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(356, 54);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // otherToolStripMenuItem
+            // 
+            this.otherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.downloadSchemaToolStripMenuItem,
+            this.validateMetricFileToolStripMenuItem});
+            this.otherToolStripMenuItem.Name = "otherToolStripMenuItem";
+            this.otherToolStripMenuItem.Size = new System.Drawing.Size(118, 48);
+            this.otherToolStripMenuItem.Text = "Other";
+            // 
+            // downloadSchemaToolStripMenuItem
+            // 
+            this.downloadSchemaToolStripMenuItem.Name = "downloadSchemaToolStripMenuItem";
+            this.downloadSchemaToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.downloadSchemaToolStripMenuItem.Text = "Download Schema";
+            this.downloadSchemaToolStripMenuItem.Click += new System.EventHandler(this.downloadSchemaToolStripMenuItem_Click);
+            // 
+            // validateMetricFileToolStripMenuItem
+            // 
+            this.validateMetricFileToolStripMenuItem.Name = "validateMetricFileToolStripMenuItem";
+            this.validateMetricFileToolStripMenuItem.Size = new System.Drawing.Size(448, 54);
+            this.validateMetricFileToolStripMenuItem.Text = "Validate Metric File";
+            this.validateMetricFileToolStripMenuItem.Click += new System.EventHandler(this.validateMetricFileToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 19);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(124, 48);
             this.aboutToolStripMenuItem.Text = "&About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -153,12 +207,47 @@
             this.mainGroupBox.Controls.Add(this.attributesPanel);
             this.mainGroupBox.Controls.Add(this.editorTree);
             this.mainGroupBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainGroupBox.Location = new System.Drawing.Point(0, 25);
+            this.mainGroupBox.Location = new System.Drawing.Point(0, 63);
+            this.mainGroupBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.mainGroupBox.Name = "mainGroupBox";
-            this.mainGroupBox.Padding = new System.Windows.Forms.Padding(3, 1, 3, 3);
-            this.mainGroupBox.Size = new System.Drawing.Size(711, 368);
+            this.mainGroupBox.Padding = new System.Windows.Forms.Padding(8, 2, 8, 7);
+            this.mainGroupBox.Size = new System.Drawing.Size(1896, 874);
             this.mainGroupBox.TabIndex = 1;
             this.mainGroupBox.TabStop = false;
+            // 
+            // issueNameEditor
+            // 
+            this.issueNameEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.issueNameEditor.Controls.Add(this.renameButton);
+            this.issueNameEditor.Controls.Add(this.issueNameTextBox);
+            this.issueNameEditor.Location = new System.Drawing.Point(677, 267);
+            this.issueNameEditor.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.issueNameEditor.Name = "issueNameEditor";
+            this.issueNameEditor.Size = new System.Drawing.Size(455, 116);
+            this.issueNameEditor.TabIndex = 3;
+            this.issueNameEditor.Visible = false;
+            // 
+            // renameButton
+            // 
+            this.renameButton.Location = new System.Drawing.Point(131, 57);
+            this.renameButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.renameButton.Name = "renameButton";
+            this.renameButton.Size = new System.Drawing.Size(200, 55);
+            this.renameButton.TabIndex = 1;
+            this.renameButton.Text = "Rename";
+            this.renameButton.UseVisualStyleBackColor = true;
+            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
+            this.renameButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.renameButton_Click);
+            // 
+            // issueNameTextBox
+            // 
+            this.issueNameTextBox.Location = new System.Drawing.Point(8, 7);
+            this.issueNameTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.issueNameTextBox.Name = "issueNameTextBox";
+            this.issueNameTextBox.Size = new System.Drawing.Size(436, 38);
+            this.issueNameTextBox.TabIndex = 0;
+            this.issueNameTextBox.WordWrap = false;
+            this.issueNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.issueNameTextBox_KeyDown);
             // 
             // issueInfo
             // 
@@ -172,59 +261,66 @@
             this.issueInfo.Controls.Add(this.issueWeightLabel);
             this.issueInfo.Controls.Add(this.issueDisplayValueLabel);
             this.issueInfo.Controls.Add(this.issueDisplayLabel);
-            this.issueInfo.Location = new System.Drawing.Point(514, 7);
+            this.issueInfo.Location = new System.Drawing.Point(1371, 17);
+            this.issueInfo.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.issueInfo.Name = "issueInfo";
-            this.issueInfo.Size = new System.Drawing.Size(193, 358);
+            this.issueInfo.Size = new System.Drawing.Size(511, 847);
             this.issueInfo.TabIndex = 6;
             // 
             // issueTypeValueLabel
             // 
             this.issueTypeValueLabel.AutoSize = true;
-            this.issueTypeValueLabel.Location = new System.Drawing.Point(75, 14);
+            this.issueTypeValueLabel.Location = new System.Drawing.Point(200, 33);
+            this.issueTypeValueLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.issueTypeValueLabel.Name = "issueTypeValueLabel";
-            this.issueTypeValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.issueTypeValueLabel.Size = new System.Drawing.Size(0, 32);
             this.issueTypeValueLabel.TabIndex = 5;
             // 
             // issueTypeLabel
             // 
             this.issueTypeLabel.AutoSize = true;
-            this.issueTypeLabel.Location = new System.Drawing.Point(7, 14);
+            this.issueTypeLabel.Location = new System.Drawing.Point(19, 33);
+            this.issueTypeLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.issueTypeLabel.Name = "issueTypeLabel";
-            this.issueTypeLabel.Size = new System.Drawing.Size(62, 13);
+            this.issueTypeLabel.Size = new System.Drawing.Size(160, 32);
             this.issueTypeLabel.TabIndex = 4;
             this.issueTypeLabel.Text = "Issue Type:";
             // 
             // issueWeightValueLabel
             // 
             this.issueWeightValueLabel.AutoSize = true;
-            this.issueWeightValueLabel.Location = new System.Drawing.Point(61, 61);
+            this.issueWeightValueLabel.Location = new System.Drawing.Point(163, 145);
+            this.issueWeightValueLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.issueWeightValueLabel.Name = "issueWeightValueLabel";
-            this.issueWeightValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.issueWeightValueLabel.Size = new System.Drawing.Size(0, 32);
             this.issueWeightValueLabel.TabIndex = 3;
             // 
             // issueWeightLabel
             // 
             this.issueWeightLabel.AutoSize = true;
-            this.issueWeightLabel.Location = new System.Drawing.Point(7, 61);
+            this.issueWeightLabel.Location = new System.Drawing.Point(19, 145);
+            this.issueWeightLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.issueWeightLabel.Name = "issueWeightLabel";
-            this.issueWeightLabel.Size = new System.Drawing.Size(44, 13);
+            this.issueWeightLabel.Size = new System.Drawing.Size(112, 32);
             this.issueWeightLabel.TabIndex = 2;
             this.issueWeightLabel.Text = "Weight:";
             // 
             // issueDisplayValueLabel
             // 
             this.issueDisplayValueLabel.AutoSize = true;
-            this.issueDisplayValueLabel.Location = new System.Drawing.Point(61, 36);
+            this.issueDisplayValueLabel.Location = new System.Drawing.Point(163, 86);
+            this.issueDisplayValueLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.issueDisplayValueLabel.Name = "issueDisplayValueLabel";
-            this.issueDisplayValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.issueDisplayValueLabel.Size = new System.Drawing.Size(0, 32);
             this.issueDisplayValueLabel.TabIndex = 1;
             // 
             // issueDisplayLabel
             // 
             this.issueDisplayLabel.AutoSize = true;
-            this.issueDisplayLabel.Location = new System.Drawing.Point(7, 36);
+            this.issueDisplayLabel.Location = new System.Drawing.Point(19, 86);
+            this.issueDisplayLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.issueDisplayLabel.Name = "issueDisplayLabel";
-            this.issueDisplayLabel.Size = new System.Drawing.Size(44, 13);
+            this.issueDisplayLabel.Size = new System.Drawing.Size(117, 32);
             this.issueDisplayLabel.TabIndex = 0;
             this.issueDisplayLabel.Text = "Display:";
             // 
@@ -235,9 +331,10 @@
             this.attributesPanel.Controls.Add(this.issueWeightCheckBox);
             this.attributesPanel.Controls.Add(this.saveAttributesButton);
             this.attributesPanel.Controls.Add(this.displayCheckBox);
-            this.attributesPanel.Location = new System.Drawing.Point(266, 75);
+            this.attributesPanel.Location = new System.Drawing.Point(709, 179);
+            this.attributesPanel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.attributesPanel.Name = "attributesPanel";
-            this.attributesPanel.Size = new System.Drawing.Size(156, 107);
+            this.attributesPanel.Size = new System.Drawing.Size(413, 252);
             this.attributesPanel.TabIndex = 4;
             this.attributesPanel.Visible = false;
             // 
@@ -268,9 +365,10 @@
             this.weightTextBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.weightTextBox.Enabled = false;
             this.weightTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.weightTextBox.Location = new System.Drawing.Point(100, 39);
+            this.weightTextBox.Location = new System.Drawing.Point(267, 93);
+            this.weightTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.weightTextBox.Name = "weightTextBox";
-            this.weightTextBox.Size = new System.Drawing.Size(41, 20);
+            this.weightTextBox.Size = new System.Drawing.Size(103, 38);
             this.weightTextBox.TabIndex = 3;
             this.weightTextBox.Text = "1.0";
             this.weightTextBox.TextChanged += new System.EventHandler(this.weightTextBox_TextChanged);
@@ -279,9 +377,10 @@
             // issueWeightCheckBox
             // 
             this.issueWeightCheckBox.AutoSize = true;
-            this.issueWeightCheckBox.Location = new System.Drawing.Point(12, 42);
+            this.issueWeightCheckBox.Location = new System.Drawing.Point(32, 100);
+            this.issueWeightCheckBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.issueWeightCheckBox.Name = "issueWeightCheckBox";
-            this.issueWeightCheckBox.Size = new System.Drawing.Size(82, 17);
+            this.issueWeightCheckBox.Size = new System.Drawing.Size(199, 36);
             this.issueWeightCheckBox.TabIndex = 2;
             this.issueWeightCheckBox.Text = "Use Weight";
             this.issueWeightCheckBox.UseVisualStyleBackColor = true;
@@ -289,9 +388,10 @@
             // 
             // saveAttributesButton
             // 
-            this.saveAttributesButton.Location = new System.Drawing.Point(12, 66);
+            this.saveAttributesButton.Location = new System.Drawing.Point(32, 157);
+            this.saveAttributesButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.saveAttributesButton.Name = "saveAttributesButton";
-            this.saveAttributesButton.Size = new System.Drawing.Size(129, 29);
+            this.saveAttributesButton.Size = new System.Drawing.Size(344, 69);
             this.saveAttributesButton.TabIndex = 1;
             this.saveAttributesButton.Text = "Save";
             this.saveAttributesButton.UseVisualStyleBackColor = true;
@@ -302,43 +402,13 @@
             this.displayCheckBox.AutoSize = true;
             this.displayCheckBox.Checked = true;
             this.displayCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.displayCheckBox.Location = new System.Drawing.Point(12, 14);
+            this.displayCheckBox.Location = new System.Drawing.Point(32, 33);
+            this.displayCheckBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.displayCheckBox.Name = "displayCheckBox";
-            this.displayCheckBox.Size = new System.Drawing.Size(60, 17);
+            this.displayCheckBox.Size = new System.Drawing.Size(147, 36);
             this.displayCheckBox.TabIndex = 0;
             this.displayCheckBox.Text = "Display";
             this.displayCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // issueNameEditor
-            // 
-            this.issueNameEditor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.issueNameEditor.Controls.Add(this.renameButton);
-            this.issueNameEditor.Controls.Add(this.issueNameTextBox);
-            this.issueNameEditor.Location = new System.Drawing.Point(254, 112);
-            this.issueNameEditor.Name = "issueNameEditor";
-            this.issueNameEditor.Size = new System.Drawing.Size(172, 50);
-            this.issueNameEditor.TabIndex = 3;
-            this.issueNameEditor.Visible = false;
-            // 
-            // renameButton
-            // 
-            this.renameButton.Location = new System.Drawing.Point(49, 24);
-            this.renameButton.Name = "renameButton";
-            this.renameButton.Size = new System.Drawing.Size(75, 23);
-            this.renameButton.TabIndex = 1;
-            this.renameButton.Text = "Rename";
-            this.renameButton.UseVisualStyleBackColor = true;
-            this.renameButton.Click += new System.EventHandler(this.renameButton_Click);
-            this.renameButton.MouseClick += new System.Windows.Forms.MouseEventHandler(this.renameButton_Click);
-            // 
-            // issueNameTextBox
-            // 
-            this.issueNameTextBox.Location = new System.Drawing.Point(3, 3);
-            this.issueNameTextBox.Name = "issueNameTextBox";
-            this.issueNameTextBox.Size = new System.Drawing.Size(166, 20);
-            this.issueNameTextBox.TabIndex = 0;
-            this.issueNameTextBox.WordWrap = false;
-            this.issueNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.issueNameTextBox_KeyDown);
             // 
             // editorTree
             // 
@@ -346,10 +416,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.editorTree.BackColor = System.Drawing.Color.White;
-            this.editorTree.Location = new System.Drawing.Point(4, 7);
+            this.editorTree.Location = new System.Drawing.Point(11, 17);
+            this.editorTree.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.editorTree.Name = "editorTree";
             this.editorTree.SelectedNode = null;
-            this.editorTree.Size = new System.Drawing.Size(510, 358);
+            this.editorTree.Size = new System.Drawing.Size(1353, 844);
             this.editorTree.TabIndex = 5;
             this.editorTree.Visible = false;
             this.editorTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.issue_NodeMouseClick);
@@ -357,39 +428,40 @@
             // 
             // issuesContextMenu
             // 
+            this.issuesContextMenu.ImageScalingSize = new System.Drawing.Size(40, 40);
             this.issuesContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.renameContextMenuItem,
             this.attributesContextMenuItem,
             this.addChildContextMenuItem,
             this.removeIssueContextMenuItem});
             this.issuesContextMenu.Name = "issuesContextMenu";
-            this.issuesContextMenu.Size = new System.Drawing.Size(128, 92);
+            this.issuesContextMenu.Size = new System.Drawing.Size(228, 196);
             // 
             // renameContextMenuItem
             // 
             this.renameContextMenuItem.Name = "renameContextMenuItem";
-            this.renameContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.renameContextMenuItem.Size = new System.Drawing.Size(227, 48);
             this.renameContextMenuItem.Text = "Rename";
             this.renameContextMenuItem.Click += new System.EventHandler(this.renameContextMenuItem_Click);
             // 
             // attributesContextMenuItem
             // 
             this.attributesContextMenuItem.Name = "attributesContextMenuItem";
-            this.attributesContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.attributesContextMenuItem.Size = new System.Drawing.Size(227, 48);
             this.attributesContextMenuItem.Text = "Attributes";
             this.attributesContextMenuItem.Click += new System.EventHandler(this.attributesContextMenuItem_Click);
             // 
             // addChildContextMenuItem
             // 
             this.addChildContextMenuItem.Name = "addChildContextMenuItem";
-            this.addChildContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.addChildContextMenuItem.Size = new System.Drawing.Size(227, 48);
             this.addChildContextMenuItem.Text = "Add Child";
             this.addChildContextMenuItem.Click += new System.EventHandler(this.addChildContextMenuItem_Click);
             // 
             // removeIssueContextMenuItem
             // 
             this.removeIssueContextMenuItem.Name = "removeIssueContextMenuItem";
-            this.removeIssueContextMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.removeIssueContextMenuItem.Size = new System.Drawing.Size(227, 48);
             this.removeIssueContextMenuItem.Text = "Remove";
             this.removeIssueContextMenuItem.Click += new System.EventHandler(this.removeIssueContextMenuItem_Click);
             // 
@@ -411,26 +483,27 @@
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 393);
+            this.ClientSize = new System.Drawing.Size(1896, 937);
             this.Controls.Add(this.mainGroupBox);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
-            this.MinimumSize = new System.Drawing.Size(727, 432);
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.MinimumSize = new System.Drawing.Size(1885, 908);
             this.Name = "MainWindow";
             this.Text = "Metric Designer";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.mainGroupBox.ResumeLayout(false);
+            this.issueNameEditor.ResumeLayout(false);
+            this.issueNameEditor.PerformLayout();
             this.issueInfo.ResumeLayout(false);
             this.issueInfo.PerformLayout();
             this.attributesPanel.ResumeLayout(false);
             this.attributesPanel.PerformLayout();
-            this.issueNameEditor.ResumeLayout(false);
-            this.issueNameEditor.PerformLayout();
             this.issuesContextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -472,6 +545,12 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.Label issueTypeValueLabel;
         private System.Windows.Forms.Label issueTypeLabel;
+        private System.Windows.Forms.ToolStripMenuItem importFromTypologyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem typologyXMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem otherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadSchemaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem validateMetricFileToolStripMenuItem;
     }
 }
 

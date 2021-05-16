@@ -7,3 +7,15 @@ c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Me
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric Designer.pdb
 c:\users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric_Designer.MainWindow.resources
 C:\Users\james\onedrive\documents\visual studio 2015\Projects\Metric Designer\Metric Designer\obj\Debug\Metric_Designer.AboutWindow.resources
+C:\Users\james\git\metric-designer\Metric Designer\bin\Debug\Metric Designer.exe.config
+C:\Users\james\git\metric-designer\Metric Designer\bin\Debug\Metric Designer.exe
+C:\Users\james\git\metric-designer\Metric Designer\bin\Debug\Metric Designer.pdb
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric Designer.csprojAssemblyReference.cache
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric_Designer.AboutWindow.resources
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric_Designer.MainWindow.resources
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric_Designer.Properties.Resources.resources
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric Designer.csproj.GenerateResource.cache
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric Designer.csproj.CoreCompileInputs.cache
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric Designer.exe
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric Designer.pdb
+C:\Users\james\git\metric-designer\Metric Designer\obj\Debug\Metric_Designer.Resources.resources

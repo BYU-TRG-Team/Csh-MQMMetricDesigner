@@ -3,15 +3,29 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using System.Xml.Schema;
+using System.Xml.Xsl;
 
 namespace Metric_Designer
 {
     public partial class MainWindow : Form
     {
+        XmlSchemaSet MetricSchemaSet = new XmlSchemaSet();
+        XmlSchemaSet TypologySchemaSet = new XmlSchemaSet();
+
+        public class XmlValidationException : Exception {
+            public string ValidationErrors { get; set; }
+            public XmlValidationException(string msg, string errors) : base(msg) {
+                ValidationErrors = errors;
+            }
+        }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -161,6 +175,11 @@ namespace Metric_Designer
         private void openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
             string filename = ((OpenFileDialog)sender).FileName;
+            
+        }
+
+        private void LoadMetricFile(string filename)
+        {
             readMetric(filename);
             editorTree.Nodes[0].Expand();
             editorTree.Focus();
@@ -241,6 +260,91 @@ namespace Metric_Designer
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
+        }
+
+        private void typologyXMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog.Filter = "XML File|*.xml";
+            openFileDialog.DefaultExt = ".xml";
+            openFileDialog.Title = "Please select Typology XML file to import.";
+            if (openFileDialog.ShowDialog() != DialogResult.OK || string.IsNullOrWhiteSpace(openFileDialog.FileName)) return;
+
+            try
+            {
+                XDocument typology = XDocument.Load(openFileDialog.FileName);
+                typology.Validate(TypologySchemaSet, (o, args) => throw new XmlValidationException("Typology XML is not valid.", args.Message));
+            } catch (XmlValidationException exception)
+            {
+                if (MessageBox.Show("Would you like to save the errors to a log file?", exception.Message, MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+
+                saveFileDialog.Filter = "Text File|*.txt;*.log";
+                saveFileDialog.DefaultExt = ".txt";
+                saveFileDialog.Title = "Please select log file.";
+                saveFileDialog.FileName = $"{Path.GetFileNameWithoutExtension(openFileDialog.FileName)}_validationLog_{DateTime.Now:yyyy-MM-dd}";
+                if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+                File.WriteAllText(saveFileDialog.FileName, exception.ValidationErrors);
+                return;
+            }
+
+            saveFileDialog.Filter = "XML File|*.xml";
+            saveFileDialog.DefaultExt = ".xml";
+            saveFileDialog.FileName = $"metric_{DateTime.Now:yyyy-MM-dd}";
+            saveFileDialog.Title = "Please choose output metric XML file.";
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            XslCompiledTransform xslCompiledTransform = new XslCompiledTransform();
+            xslCompiledTransform.Load(XDocument.Parse(Resources.typologyToMetric).CreateReader());
+
+            try
+            {
+                xslCompiledTransform.Transform(openFileDialog.FileName, saveFileDialog.FileName);
+            } catch (XsltException exception)
+            {
+                MessageBox.Show("Something went wrong with the XSLT transformation.");
+                return;
+            }
+
+            LoadMetricFile(saveFileDialog.FileName);
+        }
+
+        private void downloadSchemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog.Filter = "XML File|*.xml";
+            saveFileDialog.DefaultExt = ".xml";
+            saveFileDialog.FileName = $"metricSchema";
+            if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+            File.WriteAllText(saveFileDialog.FileName, Resources.metricSchema);
+        }
+
+        private void validateMetricFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog.Filter = "XML File|*.xml";
+            openFileDialog.DefaultExt = ".xml";
+            openFileDialog.Title = "Please select Metric XML file to validate.";
+            if (openFileDialog.ShowDialog() != DialogResult.OK || string.IsNullOrWhiteSpace(openFileDialog.FileName)) return;
+
+            try
+            {
+                XDocument typology = XDocument.Load(openFileDialog.FileName);
+                typology.Validate(MetricSchemaSet, (o, args) => throw new XmlValidationException("Metric XML is not valid.", args.Message));
+            }
+            catch (XmlValidationException exception)
+            {
+                if (MessageBox.Show("Would you like to save the errors to a log file?", exception.Message, MessageBoxButtons.YesNo) != DialogResult.Yes) return;
+
+                saveFileDialog.Filter = "Text File|*.txt;*.log";
+                saveFileDialog.DefaultExt = ".txt";
+                saveFileDialog.Title = "Please select log file.";
+                saveFileDialog.FileName = $"{Path.GetFileNameWithoutExtension(openFileDialog.FileName)}_validationLog_{DateTime.Now:yyyy-MM-dd}";
+                if (saveFileDialog.ShowDialog() != DialogResult.OK) return;
+
+                File.WriteAllText(saveFileDialog.FileName, exception.ValidationErrors);
+                return;
+            }
+
+            MessageBox.Show($"{Path.GetFileName(openFileDialog.FileName)} is valid.");
         }
     }
 }

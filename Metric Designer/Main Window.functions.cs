@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Metric_Designer
 {
@@ -9,6 +10,9 @@ namespace Metric_Designer
 
         private void PostInitialize()
         {
+            MetricSchemaSet.Add("", XDocument.Parse(Resources.metricSchema).CreateReader());
+            TypologySchemaSet.Add("", XDocument.Parse(Resources.typologySchema).CreateReader());
+
             IssueTreeNode issueTreeNode1 = new IssueTreeNode("Sample Issue");
             IssueTreeNode issueTreeNode2 = new IssueTreeNode("Issues", new System.Windows.Forms.TreeNode[] {
             issueTreeNode1});
