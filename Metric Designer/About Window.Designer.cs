@@ -124,7 +124,7 @@ namespace Metric_Designer
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(0, 32);
             this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}";
+            this.versionLabel.Text = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(4)}";
             // 
             // titleLabel
             // 

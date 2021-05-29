@@ -175,7 +175,7 @@ namespace Metric_Designer
         private void openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
             string filename = ((OpenFileDialog)sender).FileName;
-            
+            LoadMetricFile(filename);
         }
 
         private void LoadMetricFile(string filename)
