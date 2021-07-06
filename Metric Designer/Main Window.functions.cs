@@ -76,7 +76,6 @@ namespace Metric_Designer
 
         private void updateSidePanel()
         {
-            return;
             issueTypeValueLabel.Text = editorTree.SelectedNode.Text;
 
             if (((IssueTreeNode)editorTree.SelectedNode).display)
