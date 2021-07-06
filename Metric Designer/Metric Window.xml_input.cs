@@ -58,7 +58,10 @@ namespace Metric_Designer
         {
             foreach (Issue i in issues)
             {
-                IssueTreeNode issue = new IssueTreeNode(i.type);
+                IssueTreeNode issue = new IssueTreeNode(i.type)
+                {
+                    name = i.name
+                };
                 issue.display = i.display;
                 if (i.weight > 0)
                 {
@@ -93,6 +96,7 @@ namespace Metric_Designer
         {
             Issue issue = new Issue();
             issue.type = issueReader.GetAttribute("type");
+            issue.name = issueReader.GetAttribute("name");
             issue.display = checkDisplayAttr(ref issueReader);
 
             int level;

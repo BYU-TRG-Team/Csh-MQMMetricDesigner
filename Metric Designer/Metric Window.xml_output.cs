@@ -42,6 +42,11 @@ namespace Metric_Designer
                     writer.WriteAttributeString("display", "no");
                 }
 
+                if (!string.IsNullOrWhiteSpace(n.name))
+                {
+                    writer.WriteAttributeString("name", n.name);
+                }
+
                 if (n.useWeight)
                 {
                     writer.WriteAttributeString("weight", n.weight.ToString());

@@ -76,6 +76,7 @@ namespace Metric_Designer
 
         private void updateSidePanel()
         {
+            return;
             issueTypeValueLabel.Text = editorTree.SelectedNode.Text;
 
             if (((IssueTreeNode)editorTree.SelectedNode).display)
@@ -104,24 +105,24 @@ namespace Metric_Designer
             issueWeightValueLabel.Text = "";
         }
 
-        private void renameEditor()
+        private void updateIdEditor()
         {
-            renameEditor(editorTree.SelectedNode);
+            updateIdEditor(editorTree.SelectedNode);
         }
 
-        private void renameEditor(IssueTreeNode node)
+        private void updateIdEditor(IssueTreeNode node)
         {
             nodeToRename = node;
-            issueNameTextBox.Text = node.Text;
             editorTree.Enabled = false;
-            issueNameEditor.Visible = true;
-            issueNameTextBox.Focus();
-            issueNameTextBox.Select();
+            issueIdTextBox.Text = node.id ?? "";
+            issueIdEditor.Visible = true;
+            issueIdTextBox.Focus();
+            issueIdTextBox.Select();
         }
 
         private void attributeEditor()
         {
-            displayCheckBox.Checked = (editorTree.SelectedNode).display;
+            displayCheckBox.Checked = editorTree.SelectedNode.display;
 
             if ((editorTree.SelectedNode).useWeight)
             {
@@ -133,6 +134,7 @@ namespace Metric_Designer
                 issueWeightCheckBox.Checked = false;
             }
             editorTree.Enabled = false;
+            issueNameTextBox.Text = editorTree.SelectedNode.name ?? "";
             attributesPanel.Visible = true;
         }
 
@@ -141,7 +143,7 @@ namespace Metric_Designer
             resetHighlight();
             IssueTreeNode newIssue = new IssueTreeNode("New Issue");
             newIssue.display = true;
-            renameEditor(newIssue);
+            updateIdEditor(newIssue);
             int index = editorTree.SelectedNode.Nodes.Add(newIssue);
             editorTree.SelectedNode.Expand();
             IssueTreeNode previousNode = (editorTree.SelectedNode != null) ? editorTree.SelectedNode : editorTree.Nodes[0] as IssueTreeNode;

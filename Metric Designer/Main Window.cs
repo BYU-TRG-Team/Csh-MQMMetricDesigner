@@ -68,17 +68,19 @@ namespace Metric_Designer
             Application.Exit();
         }
 
-        private void renameContextMenuItem_Click(object sender, EventArgs e)
+        private void updateIdContextMenuItem_Click(object sender, EventArgs e)
         {
-            renameEditor();
+            updateIdEditor();
         }
 
-        private void renameButton_Click(object sender, EventArgs e)
+        private void updateIdButton_Click(object sender, EventArgs e)
         {
-            nodeToRename.Text = issueNameTextBox.Text;
+            if (string.IsNullOrWhiteSpace(nodeToRename.id = issueIdTextBox.Text)) return;
+
+            issueIdTextBox.Text = "";
             editorTree.Enabled = true;
             updateSidePanel();
-            issueNameEditor.Visible = false;
+            issueIdEditor.Visible = false;
             editorTree.Focus();
         }
 
@@ -139,17 +141,19 @@ namespace Metric_Designer
 
         private void saveAttributesButton_Click(object sender, EventArgs e)
         {
-            ((IssueTreeNode)editorTree.SelectedNode).display = displayCheckBox.Checked;
+            editorTree.SelectedNode.display = displayCheckBox.Checked;
             double weight;
 
             if ( issueWeightCheckBox.Checked && Double.TryParse(weightTextBox.Text, out weight))
             {
-                ((IssueTreeNode)editorTree.SelectedNode).useWeight = true;
-                ((IssueTreeNode)editorTree.SelectedNode).weight = weight;
+                if (!string.IsNullOrWhiteSpace(editorTree.SelectedNode.name = issueNameTextBox.Text ?? ""))
+                    issueNameTextBox.Text = "";
+                editorTree.SelectedNode.useWeight = true;
+                editorTree.SelectedNode.weight = weight;
             }
             else
             {
-                ((IssueTreeNode)editorTree.SelectedNode).useWeight = false;
+                editorTree.SelectedNode.useWeight = false;
             }
             editorTree.Enabled = true;
             updateSidePanel();
@@ -169,13 +173,11 @@ namespace Metric_Designer
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            openFileDialog.ShowDialog();
-        }
-
-        private void openFileDialog_FileOk(object sender, CancelEventArgs e)
-        {
-            string filename = ((OpenFileDialog)sender).FileName;
-            LoadMetricFile(filename);
+            DialogResult result = openFileDialog.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                LoadMetricFile(openFileDialog.FileName);
+            }
         }
 
         private void LoadMetricFile(string filename)
@@ -220,11 +222,11 @@ namespace Metric_Designer
             about.Show();
         }
 
-        private void issueNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        private void issueIdTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                renameButton.PerformClick();
+                updateIdButton.PerformClick();
                 e.Handled = true;
                 e.SuppressKeyPress = true;
             }
@@ -239,7 +241,7 @@ namespace Metric_Designer
                     switch (e.KeyCode)
                     {
                         case Keys.R:
-                            renameEditor();
+                            updateIdEditor();
                             break;
                         case Keys.A:
                             attributeEditor();
@@ -345,6 +347,16 @@ namespace Metric_Designer
             }
 
             MessageBox.Show($"{Path.GetFileName(openFileDialog.FileName)} is valid.");
+        }
+
+        private void issueNameTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                saveAttributesButton.PerformClick();
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+            }
         }
     }
 }
