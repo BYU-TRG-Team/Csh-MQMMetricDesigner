@@ -30,7 +30,7 @@ namespace Metric_Designer
             foreach(IssueTreeNode n in node.Nodes)
             {
                 writer.WriteStartElement("issue");
-                writer.WriteAttributeString("type", n.Text);
+                writer.WriteAttributeString("type", n.id);
                 writer.WriteAttributeString("level", level.ToString());
 
                 if (n.display)
