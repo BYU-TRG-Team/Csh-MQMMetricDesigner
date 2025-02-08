@@ -41,7 +41,7 @@ jobs:
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4
       with:
-        path: ./publish/MetricDesigner*.exe
+        path: ./Csh-MQMMetricDesigner/**/publish/MetricDesigner*.exe
         name: release
 
 
