@@ -27,8 +27,7 @@ jobs:
     #   run: dotnet test --no-restore --verbosity normal
 
     - name: Publish with dotnet
-    # use the tag name as the version unless it's a branch, then use 0.0.0
-      run: dotnet publish -c Release -o ./publish /p:Version=${{ github.ref_name == 'main' && '0.0.0' || github.ref }}
+      run: dotnet publish -c Release -o ./publish /p:Version=${{ github.ref == 'refs/heads/main' && '0.0.0' || github.ref.replace('refs/tags/v', '') }}
 
 
     - name: Archive production artifacts
