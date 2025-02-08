@@ -28,7 +28,7 @@ jobs:
 
     - name: Get Version
       run: |
-        echo "Version: ${{ github.ref == 'refs/heads/main' && '0.0.0' || GITHUB_REF_NAME#v }}"
+        echo "Version: ${{ github.ref == 'refs/heads/main' && '0.0.0' || github.ref.replace('refs/tags/v', '') }}"
 
     - name: Publish with dotnet
       run: dotnet publish -c Release -o ./publish /p:Version=$VERSION
