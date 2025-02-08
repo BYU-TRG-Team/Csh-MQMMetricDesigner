@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace Metric_Designer
@@ -11,7 +11,7 @@ namespace Metric_Designer
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainWindow());
         }

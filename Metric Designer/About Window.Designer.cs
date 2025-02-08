@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace Metric_Designer
+﻿namespace Metric_Designer
 {
     partial class AboutWindow
     {
@@ -30,133 +28,115 @@ namespace Metric_Designer
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dateLabel = new System.Windows.Forms.Label();
-            this.purposeLabel = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.emailLabel = new System.Windows.Forms.LinkLabel();
-            this.createdByLabel = new System.Windows.Forms.Label();
-            this.versionLabel = new System.Windows.Forms.Label();
-            this.titleLabel = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            this.SuspendLayout();
+            panel1 = new System.Windows.Forms.Panel();
+            purposeLabel = new System.Windows.Forms.Label();
+            linkLabel1 = new System.Windows.Forms.LinkLabel();
+            emailLabel = new System.Windows.Forms.LinkLabel();
+            createdByLabel = new System.Windows.Forms.Label();
+            versionLabel = new System.Windows.Forms.Label();
+            titleLabel = new System.Windows.Forms.Label();
+            panel1.SuspendLayout();
+            SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.dateLabel);
-            this.panel1.Controls.Add(this.purposeLabel);
-            this.panel1.Controls.Add(this.linkLabel1);
-            this.panel1.Controls.Add(this.emailLabel);
-            this.panel1.Controls.Add(this.createdByLabel);
-            this.panel1.Controls.Add(this.versionLabel);
-            this.panel1.Controls.Add(this.titleLabel);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(963, 527);
-            this.panel1.TabIndex = 1;
-            // 
-            // dateLabel
-            // 
-            this.dateLabel.AutoSize = true;
-            this.dateLabel.Location = new System.Drawing.Point(736, 489);
-            this.dateLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(215, 32);
-            this.dateLabel.TabIndex = 6;
-            this.dateLabel.Text = "Released: " + System.Reflection.Assembly
-                                                    .GetExecutingAssembly()
-                                                    .GetCustomAttribute<AssemblyCopyrightAttribute>()
-                                                    .Copyright.Substring(13);
+            panel1.Controls.Add(purposeLabel);
+            panel1.Controls.Add(linkLabel1);
+            panel1.Controls.Add(emailLabel);
+            panel1.Controls.Add(createdByLabel);
+            panel1.Controls.Add(versionLabel);
+            panel1.Controls.Add(titleLabel);
+            panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            panel1.Location = new System.Drawing.Point(0, 0);
+            panel1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new System.Drawing.Size(421, 255);
+            panel1.TabIndex = 1;
             // 
             // purposeLabel
             // 
-            this.purposeLabel.AutoSize = true;
-            this.purposeLabel.Location = new System.Drawing.Point(184, 417);
-            this.purposeLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.purposeLabel.Name = "purposeLabel";
-            this.purposeLabel.Size = new System.Drawing.Size(525, 32);
-            this.purposeLabel.TabIndex = 5;
-            this.purposeLabel.Text = "Created for use with the MQM Scorecard";
+            purposeLabel.AutoSize = true;
+            purposeLabel.Location = new System.Drawing.Point(80, 202);
+            purposeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            purposeLabel.Name = "purposeLabel";
+            purposeLabel.Size = new System.Drawing.Size(222, 15);
+            purposeLabel.TabIndex = 5;
+            purposeLabel.Text = "Created for use with the MQM Scorecard";
             // 
             // linkLabel1
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(637, 291);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(298, 42);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "byutrg@gmail.com";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            linkLabel1.Location = new System.Drawing.Point(279, 134);
+            linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new System.Drawing.Size(119, 17);
+            linkLabel1.TabIndex = 4;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "byutrg@gmail.com";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // emailLabel
             // 
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.emailLabel.Location = new System.Drawing.Point(552, 248);
-            this.emailLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(366, 42);
-            this.emailLabel.TabIndex = 3;
-            this.emailLabel.TabStop = true;
-            this.emailLabel.Text = "james.s.hayes@byu.edu";
-            this.emailLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.emailLabel_LinkClicked);
+            emailLabel.AutoSize = true;
+            emailLabel.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            emailLabel.Location = new System.Drawing.Point(279, 112);
+            emailLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(105, 17);
+            emailLabel.TabIndex = 3;
+            emailLabel.TabStop = true;
+            emailLabel.Text = "jsh226@byu.edu";
+            emailLabel.LinkClicked += emailLabel_LinkClicked;
             // 
             // createdByLabel
             // 
-            this.createdByLabel.Font = new System.Drawing.Font("Times New Roman", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createdByLabel.Location = new System.Drawing.Point(37, 196);
-            this.createdByLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.createdByLabel.Name = "createdByLabel";
-            this.createdByLabel.Size = new System.Drawing.Size(893, 191);
-            this.createdByLabel.TabIndex = 2;
-            this.createdByLabel.Text = "Created by: \r\n  James Hayes\r\n  BYU Translation Research Group";
+            createdByLabel.Font = new System.Drawing.Font("Times New Roman", 11.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            createdByLabel.Location = new System.Drawing.Point(16, 95);
+            createdByLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            createdByLabel.Name = "createdByLabel";
+            createdByLabel.Size = new System.Drawing.Size(391, 92);
+            createdByLabel.TabIndex = 2;
+            createdByLabel.Text = "Created by: \r\n  James Hayes\r\n  BYU Translation Research Group";
             // 
             // versionLabel
             // 
-            this.versionLabel.AutoSize = true;
-            this.versionLabel.Location = new System.Drawing.Point(408, 131);
-            this.versionLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(0, 32);
-            this.versionLabel.TabIndex = 1;
-            this.versionLabel.Text = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(4)}";
+            versionLabel.AutoSize = true;
+            versionLabel.Location = new System.Drawing.Point(178, 63);
+            versionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            versionLabel.Name = "versionLabel";
+            versionLabel.Size = new System.Drawing.Size(0, 15);
+            versionLabel.TabIndex = 1;
             // 
             // titleLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(176, 21);
-            this.titleLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(594, 90);
-            this.titleLabel.TabIndex = 0;
-            this.titleLabel.Text = "Metric Designer";
+            titleLabel.AutoSize = true;
+            titleLabel.Font = new System.Drawing.Font("Times New Roman", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            titleLabel.Location = new System.Drawing.Point(77, 10);
+            titleLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            titleLabel.Name = "titleLabel";
+            titleLabel.Size = new System.Drawing.Size(236, 36);
+            titleLabel.TabIndex = 0;
+            titleLabel.Text = "Metric Designer";
             // 
             // AboutWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(963, 527);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.Name = "AboutWindow";
-            this.Text = "About";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(421, 255);
+            Controls.Add(panel1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            Name = "AboutWindow";
+            Text = "About";
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Label purposeLabel;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel emailLabel;

@@ -7,6 +7,8 @@ namespace Metric_Designer
         public AboutWindow()
         {
             InitializeComponent();
+
+            versionLabel.Text = $"v{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString(3)}";
         }
 
         private void email(string mailTo)
@@ -23,12 +25,12 @@ namespace Metric_Designer
 
         private void emailLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            email("mailto:jsh226@byu.edu");
+            email($"mailto:jsh226@byu.edu");
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            email("mailto:byutrg@gmail.com");
+            email($"mailto:{linkLabel1.Text}");
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Metric_Designer {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -69,9 +69,9 @@ namespace Metric_Designer {
         ///                &lt;xs:element minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot; ref=&quot;issue&quot;/&gt;
         ///            &lt;/xs:sequence&gt;
         ///            &lt;xs:attribute name=&quot;type&quot; type=&quot;xs:string&quot;/&gt;
+        ///            &lt;xs:attribute name=&quot;name&quot; type=&quot;xs:string&quot;/&gt;
         ///            &lt;xs:attribute name=&quot;level&quot; type=&quot;xs:nonNegativeInteger&quot;/&gt;
-        ///            &lt;xs:attribute name=&quot;display&quot;&gt;
-        ///                &lt;xs:simpleType&gt; [rest of string was truncated]&quot;;.
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string metricSchema {
             get {
@@ -90,7 +90,7 @@ namespace Metric_Designer {
         ///            &lt;xs:sequence&gt;
         ///                &lt;xs:element minOccurs=&quot;0&quot; ref=&quot;description&quot;/&gt;
         ///                &lt;xs:element minOccurs=&quot;0&quot; ref=&quot;notes&quot;/&gt;
-        ///                &lt;xs:element mi [rest of string was truncated]&quot;;.
+        ///                &lt;xs: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string typologySchema {
             get {
@@ -113,7 +113,7 @@ namespace Metric_Designer {
         ///        &lt;issue display=&quot;yes&quot; weight=&quot;1&quot;&gt;
         ///            &lt;xsl:attribute name=&quot;type&quot;&gt;
         ///                &lt;xsl:value-of select=&quot;./@id&quot;/&gt;
-        ///            &lt;/xsl:attrib [rest of string was truncated]&quot;;.
+        ///           [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string typologyToMetric {
             get {
