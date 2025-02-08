@@ -58,16 +58,11 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: release
+        path: ./publish
 
     - name: Create Release
       id: create_release
       uses: softprops/action-gh-release@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        files: ./publish/**.exe
-        tag_name: ${{ github.ref }}
+        files: ./publish/MetricDesigner*.exe
         release_name: Release ${{ github.ref }}
-        body: |
-          Changes in this Release
-          - First Release
