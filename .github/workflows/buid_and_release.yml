@@ -29,7 +29,9 @@ jobs:
     #   run: dotnet test --no-restore --verbosity normal
 
     - name: Publish with dotnet
-      run: dotnet publish --configuration Release --output ./publish -p:Version=${{ github.ref_name }}
+    # use the tag name as the version unless it's a branch, then use 0.0.0
+      run: dotnet publish -c Release -o ./publish /p:Version=${{ github.ref_name == 'main' && '0.0.0' || github.ref }}
+
 
     - name: Archive production artifacts
       uses: actions/upload-artifact@v4
